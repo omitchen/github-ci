@@ -2,6 +2,7 @@
   "name": "github-ci",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://omitchen.github.io/github-ci/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -38,6 +39,14 @@
     ]
   },
   "devDependencies": {
-    "husky": "^8.0.1"
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
+  },
+  "lint-staged": {
+    "src/*": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
