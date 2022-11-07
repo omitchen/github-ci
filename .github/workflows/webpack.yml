@@ -1,21 +1,21 @@
-name: NodeJS with Webpack
+name: Deploy to Github Pages
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: push
 
 jobs:
-  build:
+  deploy:
+    name: Deploying to Github Pages
+
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-    
     steps:
-    - name: Build
-      run: |
-        npm install
-        npm run build
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Authorizing Github action
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+        uses: oleksiyrudenko/gha-git-credentials@v1
+
+      - name: Doploy to GitHub Pages
+        uses: amitsingh-007/deploy-to-github-pages@v1.1
